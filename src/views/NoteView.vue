@@ -1,19 +1,23 @@
 <template>
-  <div class="note-view">
+  <div class="note-view min-h-screen bg-slate-500">
     <div class="note-info">
-      <label class="info-label">Author:</label>
-      <p class="info-text">{{ note.author }}</p>
+      <div class="flex bg-blue-300 p-2">
+        <label class="info-label text-black font-semibold">Author:</label>
+        <p class="info-text text-black font-sans ml-2">{{ note.author }}</p>
+      </div>
     </div>
     <div class="note-info">
-      <label class="info-label">Title:</label>
-      <p class="info-text">{{ note.title }}</p>
+      <div class="flex border-b border-black bg-blue-300 p-2">
+        <label class="info-label text-black font-semibold">Title:</label>
+        <p class="info-text text-black font-sans ml-2">{{ note.title }}</p>
+      </div>
     </div>
-    <div class="note-info">
-      <label class="info-label">Body:</label>
-      <p class="note-body">{{ note.body }}</p>
+    <div class="note-info p-2">
+      <p class="note-body text-white font-serif">{{ note.body }}</p>
     </div>
   </div>
 </template>
+
 <script setup>
 import Note from "@/components/Note.vue";
 import { useMainStore } from "@/stores/mainStore";
@@ -28,28 +32,3 @@ onMounted(() => {
   note.value = mainStore.getNote(route.params.id);
 });
 </script>
-
-<style scoped>
-.note-view {
-  margin: 20px 0;
-}
-
-.note-info {
-  margin-bottom: 10px;
-}
-
-.info-label {
-  font-weight: bold;
-  color: #333;
-}
-
-.info-text {
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.note-body {
-  word-break: break-word;
-}
-</style>

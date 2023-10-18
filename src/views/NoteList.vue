@@ -1,13 +1,15 @@
 <template>
-  <div>
-    <FilterNote @applyFilter="setFilterText" />
-    <AddNote />
-    <Note
-      :note="note"
-      v-for="note in filteredNotes"
-      :key="note.id"
-      @delete-note="handleDeleteNote"
-    />
+  <div class="bg-blue-500 flex flex-col">
+    <FilterNote @applyFilter="setFilterText" class="mb-4 max-w-4" />
+    <AddNote class="mb-4 max-w-4" />
+    <div>
+      <Note
+        :note="note"
+        v-for="note in filteredNotes"
+        :key="note.id"
+        @delete-note="handleDeleteNote"
+      />
+    </div>
   </div>
 </template>
 

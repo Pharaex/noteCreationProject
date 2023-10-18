@@ -1,27 +1,39 @@
 <template>
-  <div class="note">
-    <table class="note-card">
-      <tr>
-        <th>Author</th>
-        <th>Title</th>
-        <th>Body</th>
+  <div class="note bg-blue-500 mt-4 ml-4 max-w-2xl">
+    <table class="note-card w-full border border-black rounded p-4">
+      <tr class="bg-blue-600 text-white text-center">
+        <th class="py-2 px-4">Author</th>
+        <th class="py-2 px-4">Title</th>
+        <th class="py-2 px-4">Body</th>
+        <th class="py-2 px-4"></th>
       </tr>
-      <tr>
-        <td>{{ note?.author }}</td>
-        <td>{{ note?.title }}</td>
-        <td class="note-body">{{ shortenedBody }}</td>
-        <td class="button-cell">
-          <button class="action-button delete-button" @click="deleteNote">
-            Delete
-          </button>
-          <button class="action-button view-button" @click="handleOpenNote">
-            View
-          </button>
+      <tr class="bg-white text-center border border-black">
+        <td class="py-2 px-4">{{ note?.author }}</td>
+        <td class="py-2 px-4">{{ note?.title }}</td>
+        <td class="note-body py-2 px-4">
+          {{ shortenedBody }}
+        </td>
+        <td class="button-cell py-2 px-4">
+          <div class="flex">
+            <button
+              class="action-button font-semibold bg-gray-500 hover:bg-gray-600 text-white border-black border p-2 rounded-full"
+              @click="handleOpenNote"
+            >
+              View
+            </button>
+            <button
+              class="action-button font-semibold bg-orange-500 hover:bg-orange-600 text-white border-black border p-2 rounded-full mx-2"
+              @click="deleteNote"
+            >
+              Delete
+            </button>
+          </div>
         </td>
       </tr>
     </table>
   </div>
 </template>
+
 <script setup>
 import { computed } from "vue";
 import router from "@/router";
@@ -46,57 +58,3 @@ const handleOpenNote = () => {
   router.push(`/note/${props.note.id}`);
 };
 </script>
-<style scoped>
-.note {
-  margin-bottom: 20px;
-}
-
-.note-card {
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f5f5f5;
-  width: 100%;
-}
-
-.note-card th {
-  background-color: #333;
-  color: white;
-}
-
-.note-body {
-  word-break: break-word;
-}
-
-.button-cell {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.action-button {
-  padding: 5px 10px;
-  margin-right: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.action-button.delete-button {
-  background-color: #ff5733;
-  color: white;
-}
-
-.action-button.view-button {
-  background-color: #337ab7;
-  color: white;
-}
-
-.action-button.delete-button:hover {
-  background-color: #e04128;
-}
-
-.action-button.view-button:hover {
-  background-color: #2d6098;
-}
-</style>

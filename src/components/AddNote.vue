@@ -1,16 +1,36 @@
 <template>
-  <div class="add-note-form">
-    <label class="form-label">Author:</label>
-    <input class="form-input" type="text" v-model="formData.author" />
-    <label class="form-label">Title:</label>
-    <input class="form-input" type="text" v-model="formData.title" />
-    <label class="form-label">Body:</label>
-    <textarea class="form-input" v-model="formData.body" rows="4"></textarea>
-    <div class="form-submit">
-      <button class="submit-button" @click="handleSubmit">Submit Note</button>
+  <div class="add-note mt-4 ml-4 border p-4 rounded border-black max-w-md">
+    <div class="flex flex-col">
+      <label class="form-label font-bold mb-2 text-gray-700">Author:</label>
+      <input
+        class="form-input mb-4 p-2 border border-black rounded"
+        type="text"
+        v-model="formData.author"
+      />
+      <label class="form-label font-bold mb-2 text-gray-700">Title:</label>
+      <input
+        class="form-input mb-4 p-2 border border-black rounded"
+        type="text"
+        v-model="formData.title"
+      />
+      <label class="form-label font-bold mb-2 text-gray-700">Body:</label>
+      <textarea
+        class="form-input mb-4 p-2 border border-black rounded resize-y"
+        v-model="formData.body"
+        rows="4"
+      ></textarea>
+    </div>
+    <div class="form-submit mt-5">
+      <button
+        class="submit-button font-semibold bg-gray-500 text-white border-black border p-3 rounded-full cursor-pointer shadow-md hover:bg-gray-600"
+        @click="handleSubmit"
+      >
+        Submit Note
+      </button>
     </div>
   </div>
 </template>
+
 <script setup>
 import { useMainStore } from "@/stores/mainStore";
 import { reactive } from "vue";
@@ -48,49 +68,4 @@ const handleSubmit = async () => {
 };
 </script>
 
-<style scoped>
-.add-note-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 400px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-label {
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
-}
-
-.form-input {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.form-input.textarea {
-  resize: vertical;
-}
-
-.form-submit {
-  margin-top: 20px;
-}
-
-.submit-button {
-  background-color: #0066a2;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 20px;
-  cursor: pointer;
-  box-shadow: 5px 5px 5px #eee;
-}
-
-.submit-button:hover {
-  background-color: #016abc;
-}
-</style>
+<style scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex min-h-screen bg-blue-500">
     <router-view />
   </div>
 </template>
@@ -14,12 +14,4 @@ export default {
 };
 </script>
 
-<style>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  height: 100vh;
-  background-color: #f5f5f5;
-}
-</style>
+<style src="./style.css"></style>
